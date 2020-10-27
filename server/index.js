@@ -3,6 +3,8 @@ import bodyParser from 'body-parser';
 import logger from './lib/logger.js';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import dotenv from 'dotenv';
+dotenv.dataconfig();
 // midlewares
 import httpLoggerMiddleware from './middleware/logger-middleware.js';
 import jsonResponseMiddleware from './middleware/json-response.js';
@@ -10,9 +12,9 @@ import errorHandlerMiddleware from './middleware/error-handler.js';
 
 import musicRouter from './routes/music.js';
 
-const HOST = '127.0.0.1';
-const PORT = 5000;
-export const databaseURI = 'mongodb://localhost/mongoose-intro';
+const HOST =process.env.HOST || '127.0.0.1';
+const PORT = process.env.PORT || 5000;
+export const databaseURI =process.env.DATA_BASE_URI|| 'mongodb://localhost/mongoose-intro';
 // const databaseURI = 'mongodb://localhost:2700/mongoose-intro
 
 // Creacion del servidor
